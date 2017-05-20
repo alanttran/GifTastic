@@ -1,5 +1,10 @@
+body{
+	background-image: url('http://www.designbolts.com/wp-content/uploads/2012/12/Skin-Side-Up-White-Seamless-Texutre-For-Website-Background.jpg');
+}
 h1{
 	text-align: center;
+	margin-bottom: 30px;
+	font-family: 'Shrikhand', cursive;
 }
 .buttons{
 	text-align: center;

@@ -2,15 +2,22 @@ $(document).ready(function() {
 
     var topics = ["Archer", "Futurama", "Minions", "Spongebob", "Simpsons", "Garfield", "Rugrats"];
 
-    $.each(topics, function(i, val) {
-        var topicButton = $('<button>').attr('class', 'btn').addClass('btn-primary').text(val);
-        $('.buttons').append(topicButton);
-    });
+    loadTopicButtons();
+
+    // loops through topics array and append buttons to HTML
+    function loadTopicButtons(){
+        $('.buttons').empty();
+        $.each(topics, function(i, val) {
+            var topicButton = $('<button>').attr('class', 'btn').addClass('btn-primary').text(val);
+            $('.buttons').append(topicButton);
+        });
+    }
+    
 
     // whenever a button is clicked
     // query the subject
     // and populate gifs
-    $('.buttons .btn-primary').on('click', function() {
+    $('.buttons').on('click', ".btn-primary", function() {
         console.log($(this).text());
 
         var topicFromButton = $(this).text();
@@ -38,8 +45,6 @@ $(document).ready(function() {
 
         var gifArea = $('.gif-area');
         gifArea.empty();
-
-        $('<div>')
 
         $.each(array, function(i, val) {
             gifArea.append($('<div>', {class: 'gif-container'}).append($('<div>').text("Rating: " + val.rating))
@@ -77,6 +82,17 @@ $(document).ready(function() {
 
             });
     }
+
+    // whenever submit button is clicked
+    // add button to array
+    // reload array in html
+    $('.btn-success').on('click', function() {
+        event.preventDefault();
+        console.log($('#cartoon-add-input').val());
+        topics.push($('#cartoon-add-input').val());
+        loadTopicButtons();
+
+    });
 
 
 });
